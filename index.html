@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BROpay - Next-Gen Banking</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- AI Security Monitor -->
+    <div class="ai-monitor">
+        <span>🤖 AI Security: Active</span>
+        <div class="ai-pulse"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>BROpay</h1>
+            <span class="secure-badge">🔒 Secured by bedusec</span>
+        </div>
+        <div class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#crypto">Crypto</a>
+            <a href="#stocks">Stocks</a>
+            <a href="#transfer">Transfer</a>
+            <button class="login-btn" id="loginBtn">Login</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Secure Login</h2>
+                <div class="ai-auth">
+                    <div class="face-scan"></div>
+                    <p>AI Face Recognition Active</p>
+                </div>
+                <form id="loginForm">
+                    <input type="text" placeholder="Username" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">🔐 Secure Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="section active">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="userName">User</span></h2>
+                <div class="balance-card">
+                    <h3>Total Balance</h3>
+                    <h1 id="totalBalance">$12,450.89</h1>
+                    <div class="balance-breakdown">
+                        <span>Checking: $8,120.45</span>
+                        <span>Crypto: ₿0.42 ($4,230.44)</span>
+                        <span>Stocks: $100.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <button class="action-btn" onclick="showSection('transfer')">
+                    💸 Send Money
+                </button>
+                <button class="action-btn" onclick="showSection('crypto')">
+                    ₿ Buy Crypto
+                </button>
+                <button class="action-btn" onclick="showSection('stocks')">
+                    📈 Trade Stocks
+                </button>
+                <button class="action-btn" onclick="simulateDeposit()">
+                    📥 Deposit
+                </button>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div id="activityFeed" class="activity-feed">
+                    <!-- Activity items will be added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Crypto Section -->
+        <section id="crypto" class="section">
+            <h2>Crypto Trading</h2>
+            <div class="crypto-grid">
+                <div class="crypto-card" onclick="selectCrypto('BTC', 45123.50)">
+                    <h3>Bitcoin (BTC)</h3>
+                    <p>$45,123.50</p>
+                    <span class="change positive">+2.3%</span>
+                </div>
+                <div class="crypto-card" onclick="selectCrypto('ETH', 3250.75)">
+                    <h3>Ethereum (ETH)</h3>
+                    <p>$3,250.75</p>
+                    <span class="change positive">+1.8%</span>
+                </div>
+                <div class="crypto-card" onclick="selectCrypto('SOL', 102.45)">
+                    <h3>Solana (SOL)</h3>
+                    <p>$102.45</p>
+                    <span class="change negative">-0.5%</span>
+                </div>
+            </div>
+
+            <div class="trade-panel">
+                <h3>Trade <span id="selectedCrypto">BTC</span></h3>
+                <div class="trade-form">
+                    <input type="number" id="cryptoAmount" placeholder="Amount" min="0.001" step="0.001">
+                    <div class="trade-buttons">
+                        <button class="buy-btn" onclick="executeTrade('buy')">Buy</button>
+                        <button class="sell-btn" onclick="executeTrade('sell')">Sell</button>
+                    </div>
+                </div>
+                <div id="tradeResult" class="trade-result"></div>
+            </div>
+        </section>
+
+        <!-- Stocks Section -->
+        <section id="stocks" class="section">
+            <h2>Stock Trading</h2>
+            <div class="stocks-grid">
+                <div class="stock-card" onclick="selectStock('AAPL', 182.63)">
+                    <h3>AAPL</h3>
+                    <p>Apple Inc.</p>
+                    <span class="price">$182.63</span>
+                    <span class="change positive">+0.8%</span>
+                </div>
+                <div class="stock-card" onclick="selectStock('TSLA', 245.18)">
+                    <h3>TSLA</h3>
+                    <p>Tesla Inc.</p>
+                    <span class="price">$245.18</span>
+                    <span class="change negative">-1.2%</span>
+                </div>
+                <div class="stock-card" onclick="selectStock('NVDA', 495.22)">
+                    <h3>NVDA</h3>
+                    <p>NVIDIA Corp.</p>
+                    <span class="price">$495.22</span>
+                    <span class="change positive">+3.4%</span>
+                </div>
+            </div>
+
+            <div class="trade-panel">
+                <h3>Trade <span id="selectedStock">AAPL</span></h3>
+                <div class="trade-form">
+                    <input type="number" id="stockQuantity" placeholder="Shares" min="1" step="1">
+                    <div class="trade-buttons">
+                        <button class="buy-btn" onclick="executeStockTrade('buy')">Buy</button>
+                        <button class="sell-btn" onclick="executeStockTrade('sell')">Sell</button>
+                    </div>
+                </div>
+                <div id="stockTradeResult" class="trade-result"></div>
+            </div>
+        </section>
+
+        <!-- Transfer Section -->
+        <section id="transfer" class="section">
+            <h2>Send Money</h2>
+            <div class="transfer-form">
+                <div class="form-group">
+                    <label>Recipient</label>
+                    <input type="text" id="recipient" placeholder="Email, phone, or BROpay ID">
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="transferAmount" placeholder="0.00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Currency</label>
+                    <select id="transferCurrency">
+                        <option value="USD">USD</option>
+                        <option value="BTC">Bitcoin</option>
+                        <option value="ETH">Ethereum</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Note (Optional)</label>
+                    <input type="text" id="transferNote" placeholder="What's this for?">
+                </div>
+                <button class="submit-btn" onclick="executeTransfer()">Send Payment</button>
+            </div>
+            <div id="transferResult" class="transfer-result"></div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
