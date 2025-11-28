@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BROpay - Next-Gen Banking</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <!-- AI Security Monitor -->
@@ -47,7 +47,7 @@
             <!-- Login Form -->
             <div id="loginForm" class="auth-form active">
                 <h2>Welcome Back</h2>
-                <form id="loginFormElement">
+                <form onsubmit="handleLogin(event)">
                     <div class="form-group">
                         <input type="email" id="loginEmail" placeholder="Email" required>
                     </div>
@@ -64,7 +64,7 @@
             <!-- Signup Form -->
             <div id="signupForm" class="auth-form">
                 <h2>Join BROpay</h2>
-                <form id="signupFormElement">
+                <form onsubmit="handleSignup(event)">
                     <div class="form-group">
                         <input type="text" id="signupName" placeholder="Full Name" required>
                     </div>
@@ -94,10 +94,10 @@
                 <span class="secure-badge">🔒 Secured by bedusec</span>
             </div>
             <div class="nav-links">
-                <a href="#" onclick="showSection('dashboard')">Dashboard</a>
-                <a href="#" onclick="showSection('crypto')">Crypto</a>
-                <a href="#" onclick="showSection('stocks')">Stocks</a>
-                <a href="#" onclick="showSection('transfer')">Transfer</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#crypto">Crypto</a>
+                <a href="#stocks">Stocks</a>
+                <a href="#transfer">Transfer</a>
                 <div class="user-menu">
                     <span id="userGreeting">Welcome, User</span>
                     <button class="logout-btn" onclick="handleLogout()">Logout</button>
@@ -249,48 +249,8 @@
         </main>
     </div>
 
-    <!-- Load JavaScript files with error handling -->
+    <script src="js/app.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/assistant.js"></script>
-    <script src="js/app.js"></script>
-    
-    <!-- Fallback JavaScript if files fail to load -->
-    <script>
-        // Basic fallback functionality
-        console.log('BROpay loading...');
-        
-        // Simple form switching as fallback
-        window.showLogin = function() {
-            document.getElementById('loginForm').classList.add('active');
-            document.getElementById('signupForm').classList.remove('active');
-        };
-        
-        window.showSignup = function() {
-            document.getElementById('signupForm').classList.add('active');
-            document.getElementById('loginForm').classList.remove('active');
-        };
-        
-        // Basic assistant toggle
-        window.toggleAssistant = function() {
-            const assistant = document.getElementById('aiAssistant');
-            assistant.classList.toggle('active');
-        };
-        
-        // Close assistant
-        document.querySelector('.close-assistant').addEventListener('click', toggleAssistant);
-        
-        // Prevent form submission for now
-        document.getElementById('loginFormElement')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Login functionality loading...');
-        });
-        
-        document.getElementById('signupFormElement')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Signup functionality loading...');
-        });
-        
-        console.log('BROpay fallback loaded');
-    </script>
 </body>
 </html>
