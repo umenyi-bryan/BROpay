@@ -1,3 +1,10 @@
+/* BROpay - Complete CSS Reset and Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary: #0066ff;
     --primary-dark: #0052cc;
@@ -8,50 +15,14 @@
     --light: #ffffff;
     --gray: #8c94a7;
     --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-    --gradient-dark: linear-gradient(135deg, var(--primary-dark), #00997a);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--darker);
     color: var(--light);
     line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* AI Security Monitor */
-.ai-monitor {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 212, 170, 0.1);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--secondary);
-}
-
-.ai-pulse {
-    width: 8px;
-    height: 8px;
-    background: var(--secondary);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    min-height: 100vh;
 }
 
 /* Authentication Styles */
@@ -60,17 +31,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 2rem;
+    padding: 20px;
     background: var(--darker);
-}
-
-.auth-container:not(.active) {
-    display: none;
 }
 
 .auth-card {
     background: rgba(255, 255, 255, 0.05);
-    padding: 3rem;
+    padding: 40px 30px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -83,14 +50,27 @@ body {
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 800;
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
 }
 
 .auth-header p {
     color: var(--gray);
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.secure-badge {
+    display: inline-block;
+    background: rgba(0, 212, 170, 0.1);
+    color: var(--secondary);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid var(--secondary);
+    margin-top: 10px;
 }
 
 .auth-form {
@@ -102,12 +82,13 @@ body {
 }
 
 .auth-form h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
     color: var(--light);
+    font-size: 1.8rem;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
     text-align: left;
 }
 
@@ -115,31 +96,32 @@ body {
     width: 100%;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 1rem;
+    padding: 15px;
     border-radius: 10px;
     color: var(--light);
     font-size: 1rem;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--secondary);
     background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
 }
 
 .auth-btn {
     width: 100%;
     background: var(--gradient);
     border: none;
-    padding: 1rem;
+    padding: 15px;
     border-radius: 10px;
     color: white;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s;
-    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .auth-btn:hover {
@@ -149,282 +131,17 @@ body {
 
 .auth-switch {
     color: var(--gray);
+    margin-top: 20px;
 }
 
 .auth-switch a {
     color: var(--secondary);
     text-decoration: none;
+    font-weight: 600;
 }
 
 .auth-switch a:hover {
     text-decoration: underline;
-}
-
-/* Main App */
-.main-app {
-    display: none;
-}
-
-.main-app.active {
-    display: block;
-}
-
-/* Navigation */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background: rgba(15, 20, 32, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-brand h1 {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-    font-size: 1.8rem;
-}
-
-.secure-badge {
-    font-size: 0.7rem;
-    color: var(--secondary);
-    margin-left: 10px;
-    opacity: 0.8;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--light);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: var(--secondary);
-}
-
-.user-menu {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logout-btn {
-    background: rgba(255, 107, 107, 0.2);
-    border: 1px solid var(--accent);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    color: var(--light);
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.logout-btn:hover {
-    background: var(--accent);
-}
-
-/* Sections */
-.section {
-    display: none;
-    padding: 2rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section.active {
-    display: block;
-}
-
-/* Dashboard */
-.dashboard-header {
-    margin-bottom: 2rem;
-}
-
-.balance-card {
-    background: var(--gradient);
-    padding: 2rem;
-    border-radius: 20px;
-    margin: 1rem 0;
-    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
-}
-
-.balance-card h1 {
-    font-size: 3rem;
-    margin: 0.5rem 0;
-}
-
-.balance-breakdown {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-}
-
-.quick-actions {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.action-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 1.5rem;
-    border-radius: 15px;
-    color: var(--light);
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    backdrop-filter: blur(10px);
-}
-
-.action-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-}
-
-/* Crypto & Stocks Grid */
-.crypto-grid, .stocks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.crypto-card, .stock-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.crypto-card:hover, .stock-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-}
-
-.crypto-card h3, .stock-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-}
-
-.change {
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.positive { color: #00d4aa; }
-.negative { color: #ff6b6b; }
-
-/* Trade Panels */
-.trade-panel {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
-    margin-top: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.trade-form {
-    display: flex;
-    gap: 1rem;
-    align-items: end;
-    flex-wrap: wrap;
-}
-
-.trade-form input {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0.8rem;
-    border-radius: 10px;
-    color: var(--light);
-    font-size: 1rem;
-    flex: 1;
-    min-width: 200px;
-}
-
-.trade-buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-.buy-btn, .sell-btn, .submit-btn {
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.buy-btn, .submit-btn {
-    background: var(--secondary);
-    color: var(--dark);
-}
-
-.sell-btn {
-    background: var(--accent);
-    color: var(--light);
-}
-
-.buy-btn:hover, .submit-btn:hover {
-    background: #00b894;
-    transform: translateY(-2px);
-}
-
-.sell-btn:hover {
-    background: #ff5252;
-    transform: translateY(-2px);
-}
-
-/* Transfer Form */
-.transfer-form {
-    max-width: 500px;
-    margin: 2rem 0;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--gray);
-    font-weight: 500;
-}
-
-/* Results */
-.trade-result, .transfer-result {
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
-    background: rgba(0, 212, 170, 0.1);
-    border: 1px solid var(--secondary);
-}
-
-/* Activity Feed */
-.activity-feed {
-    margin-top: 1rem;
-}
-
-.activity-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-    border-left: 4px solid var(--secondary);
 }
 
 /* AI Assistant */
@@ -449,7 +166,7 @@ body {
 
 .assistant-header {
     background: var(--gradient);
-    padding: 1rem;
+    padding: 15px;
     border-radius: 15px 15px 0 0;
     display: flex;
     justify-content: space-between;
@@ -459,29 +176,37 @@ body {
 .assistant-header h3 {
     color: white;
     margin: 0;
+    font-size: 1.2rem;
 }
 
 .close-assistant {
     background: none;
     border: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .assistant-messages {
     flex: 1;
-    padding: 1rem;
+    padding: 15px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
 }
 
 .message {
-    padding: 0.8rem;
-    border-radius: 10px;
-    max-width: 80%;
+    padding: 12px 15px;
+    border-radius: 15px;
+    max-width: 85%;
+    word-wrap: break-word;
 }
 
 .ai-message {
@@ -497,29 +222,35 @@ body {
 }
 
 .assistant-input {
-    padding: 1rem;
+    padding: 15px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    gap: 0.5rem;
+    gap: 10px;
 }
 
 .assistant-input input {
     flex: 1;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0.8rem;
+    padding: 12px;
     border-radius: 10px;
     color: var(--light);
+    font-size: 0.9rem;
 }
 
 .assistant-input button {
     background: var(--secondary);
     border: none;
-    padding: 0.8rem 1rem;
+    padding: 12px 20px;
     border-radius: 10px;
     color: var(--dark);
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.assistant-input button:hover {
+    background: #00b894;
 }
 
 .assistant-toggle {
@@ -528,14 +259,14 @@ body {
     right: 20px;
     background: var(--gradient);
     border: none;
-    padding: 1rem 1.5rem;
+    padding: 12px 20px;
     border-radius: 25px;
     color: white;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
     z-index: 999;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .assistant-toggle:hover {
@@ -543,36 +274,102 @@ body {
     box-shadow: 0 8px 20px rgba(0, 102, 255, 0.6);
 }
 
+/* Main App */
+.main-app {
+    display: none;
+}
+
+.main-app.active {
+    display: block;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(15, 20, 32, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-brand h1 {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    color: var(--secondary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout-btn {
+    background: rgba(255, 107, 107, 0.2);
+    border: 1px solid var(--accent);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: var(--light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+    background: var(--accent);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .auth-card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
     .navbar {
         flex-direction: column;
-        gap: 1rem;
+        gap: 15px;
+        padding: 15px;
     }
     
     .nav-links {
-        gap: 1rem;
-    }
-    
-    .balance-card h1 {
-        font-size: 2rem;
-    }
-    
-    .balance-breakdown {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .quick-actions {
-        grid-template-columns: 1fr;
-    }
-    
-    .trade-form {
-        flex-direction: column;
-    }
-    
-    .trade-form input {
-        min-width: auto;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .ai-assistant {
@@ -581,4 +378,18 @@ body {
         right: 20px;
         left: 20px;
     }
+}
+
+/* Ensure all elements are visible */
+* {
+    visibility: visible !important;
+}
+
+/* Force display properties */
+div, section, form, input, button, nav, main {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
 }
