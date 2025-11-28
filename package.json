@@ -1,27 +1,19 @@
 {
   "name": "bropay",
   "version": "1.0.0",
-  "description": "Next-Gen AI-Secured Banking Platform - Universal Deployment",
+  "description": "Next-Gen AI Banking Platform",
   "main": "index.html",
   "scripts": {
-    "build": "node build-universal.js",
-    "dev": "node serve.js",
-    "start": "node serve.js",
-    "serve": "python3 -m http.server 3000",
-    "netlify:deploy": "netlify deploy --prod",
-    "vercel:deploy": "vercel --prod",
-    "deploy": "echo '🚀 Choose your platform: npm run vercel:deploy OR npm run netlify:deploy'",
-    "test:build": "npm run build",
-    "test:serve": "npm run dev"
+    "dev": "python3 -m http.server 3000",
+    "build": "mkdir -p dist && cp -r *.html css js dist/ 2>/dev/null || true && echo 'Static files copied to dist'",
+    "vercel-build": "echo 'Vercel build complete - no build needed for static site'",
+    "deploy": "vercel --prod"
   },
-  "keywords": ["banking", "crypto", "trading", "ai", "security", "universal", "vercel", "netlify"],
+  "keywords": ["banking", "crypto", "ai", "finance"],
   "author": "bedusec",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/umenyi-bryan/BROpay.git"
-  },
-  "engines": {
-    "node": ">=16.0.0"
   }
 }
